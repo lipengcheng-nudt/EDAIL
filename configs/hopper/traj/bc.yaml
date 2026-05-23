@@ -1,0 +1,53 @@
+# Copyright (c) 2024, NVIDIA CORPORATION.  All rights reserved.
+#
+# NVIDIA CORPORATION and its licensors retain all intellectual property
+# and proprietary rights in and to this software, related documentation
+# and any modifications thereto.  Any use, reproduction, disclosure or
+# distribution of this software and related documentation without an express
+# license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+project: 'drail-project-baseline'
+program: drail/main.py
+method: grid
+name: Hopper-bc
+
+parameters:
+  seed:
+    values: [2]
+    # value: 1
+  prefix:
+    value: "bc"
+  alg:
+    value: "bc"
+  traj-load-path:
+    value: ./expert_datasets/Hopper-v2.pt
+  env-name:
+    value: "Hopper-v2"
+  normalize-env:
+    value: False
+  bc-num-epochs:
+    value: 6000
+  eval-num-processes:
+    value: 1
+  cuda:
+    value: True
+  num-render:
+    value: 0
+  num-eval:
+    value: 100
+  vid-fps:
+    value: 100
+  lr:
+    value: 0.0001
+  log-interval:
+    value: 1000
+  save-interval:
+    value: 100000
+  eval-interval:
+    value: 1000
+  bc-state-norm:
+    value: True
+  clip-actions:
+    value: True
+  traj-frac:
+    value: 0.01

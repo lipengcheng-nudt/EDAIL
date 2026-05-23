@@ -1,0 +1,72 @@
+# Copyright (c) 2024, NVIDIA CORPORATION.  All rights reserved.
+#
+# NVIDIA CORPORATION and its licensors retain all intellectual property
+# and proprietary rights in and to this software, related documentation
+# and any modifications thereto.  Any use, reproduction, disclosure or
+# distribution of this software and related documentation without an express
+# license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+project: 'drail-project'
+program: drail/main.py
+method: grid
+name: Hopper-drail-1.00
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args}
+  - --use-proper-time-limits
+
+parameters:
+  num-mini-batch:
+    value: 32
+  env-name:
+    value: Hopper-v2
+  cuda:
+    value: True
+  traj-load-path:
+    value: ./expert_datasets/Hopper-v2.pt
+  entropy-coef:
+    value: 0.001
+  max-grad-norm:
+    value: 0.5
+  eval-num-processes:
+    value: 1
+  num-render:
+    value: 0
+  num-eval:
+    value: 10
+  eval-interval:
+    value: 1000
+  save-interval:
+    value: 1000
+  disc-lr:
+    value: 0.0001
+  lr:
+    value: 0.0001
+  normalize-env:
+    value: True
+  drail-reward-norm:
+    value: True
+  drail-state-norm:
+     value: True
+  n-drail-epochs:
+    value: 1
+  discrim-depth:
+    value: 4
+  discrim-num-unit:
+    value: 1024
+  prefix:
+    value: edail
+  alg:
+    value: edail
+  seed:
+    values: [1]
+  traj-frac:
+    values: [0.01] #0.0128,0.0064,0.0016
+  c:
+    values: [3]
+#  num-steps:
+#    value: 50
+  num-env-steps:
+    value: 5000000
